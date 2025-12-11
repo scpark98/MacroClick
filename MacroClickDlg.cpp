@@ -194,6 +194,13 @@ HCURSOR CMacroClickDlg::OnQueryDragIcon()
 
 void CMacroClickDlg::OnBnClickedOk()
 {
+	if (m_list.size() > 0)
+	{
+		int res = AfxMessageBox(_T("새로 기록을 시작할 경우 기존 기록이 모두 초기화됩니다.\n계속 진행할까요?"), MB_ICONQUESTION | MB_YESNO);
+		if (res == IDNO)
+			return;
+	}
+
 	ShowWindow(SW_MINIMIZE);
 
 	Wait(500);
