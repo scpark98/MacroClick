@@ -246,7 +246,7 @@ void CMacroClickDlg::init_list()
 {
 	m_list.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_FLATSB | LVS_EX_GRIDLINES);
 
-	m_list.set_headings(_T("순번,50;x,50;y,50;후 딜레이,100;수행 후 액션,200"));
+	m_list.set_headings(_T("순번,50;키,100;x,50;y,50;후 딜레이,100;수행 후 액션,200"));
 	m_list.set_header_height(24);
 	m_list.set_line_height(22);
 	m_list.set_font_size(9);
@@ -255,6 +255,9 @@ void CMacroClickDlg::init_list()
 	m_list.allow_sort(false);
 
 	m_list.allow_edit_column(col_index, false);
+
+	m_list.set_header_text_align(col_point_x, HDF_CENTER);
+	m_list.set_header_text_align(col_point_y, HDF_CENTER);
 
 	m_list.restore_column_width(&theApp, _T("list"));
 
@@ -271,7 +274,7 @@ void CMacroClickDlg::load_registry()
 		str = theApp.GetProfileString(_T("setting\\list"), i2S(i), _T(""));
 		std::deque<CString> token;
 
-		get_token_string(str, token, _T("|"));
+		get_token_str(str, token, _T("|"));
 
 		if (token.size() < 3)
 			continue;
@@ -502,7 +505,7 @@ void CMacroClickDlg::post_action()
 		return;
 
 	std::deque<CString> token;
-	get_token_string(str_action, token, _T(","), false);
+	get_token_str(str_action, token, _T(","), false);
 	if (token.size() != 5)
 		return;
 

@@ -21,6 +21,7 @@ public:
 	enum LIST_COLUMN
 	{
 		col_index = 0,
+		col_key,
 		col_point_x,
 		col_point_y,
 		col_delay,
