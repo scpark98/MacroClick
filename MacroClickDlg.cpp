@@ -373,14 +373,14 @@ void CMacroClickDlg::OnTimer(UINT_PTR nIDEvent)
 			return;
 		}
 
-		trace(m_play_index);
+		sctrace(m_play_index);
 		m_play_index++;
 
 		if (m_play_index == m_list.size())
 		{
 			m_play_index = 0;
 			m_play_loop_count++;
-			trace(m_play_loop_count);
+			sctrace(m_play_loop_count);
 
 			if (m_play_loop_max > 0 && (m_play_loop_count >= m_play_loop_max))
 			{
@@ -409,7 +409,7 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 
 	if (wParam == WM_KEYDOWN)
 	{
-		trace(pKey->vkCode);
+		sctrace(pKey->vkCode);
 		::SendMessage(g_hMainWnd, MSG_KEYBOARD_SCAN_CODE, (WPARAM)pKey, (LPARAM)0);
 	}
 
